@@ -36,7 +36,7 @@ window.SITE_DATA = {
   work: [
 
     {
-      title: "DJI Drone Security and Intrusion Detection Research @ GMU Living Innovation Lab",
+      title: "DJI Drone Security and Intrusion Detection Research @ GMU Cyber Innovation Lab",
       tag: "Research",
       years: "SUMMER 2025 - SPRING 2026",
       role: "Student Researcher & Intern",
@@ -187,7 +187,7 @@ window.SITE_DATA = {
     gpaNote: "",
 
     testing: {
-      apNote: "Scored 5 on every AP exam taken.",
+      apNote: "Taken May 2025 & May 2026",
       apExams: [
         "Computer Science A",
         "Chemistry",
