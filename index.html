@@ -3,28 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script type='text/javascript' nonce='hgaDqLjhE0WUh+6MLKh3YQ==' src='https://claude.ai/d-wdLwobv6NTzCd3mkIfBWnGMDlewY20HcOD1abFG-TNqdMIsnfE4fMOHMl8J5DuZd3P_iJyhA1cEFXKzObaTeAtpO_K4H89fTTWfoKOuKVHWAmTxq6LgaBuVrYXTrGujHwwqZsZ4MTiEQIJ0lRuJdwQDuX_T_mt6rfa9TPvFPM3K6SWIR7-gwsae04qn7FPsjBnVbunJVGP2kJhknzbCfOX8uMq3KZbzWEaFy9vbver_7iyxlkrT67mt39WtU1tV-HxgbDuwba-8EQlnUPVzQVu8v96mMz85wpcEriJNCGK2IN8gQmy7Ri56dUThXrM0YQjB9WgWuHjdPBM6TMs7KHw4Db-y44tU-QWAlL14FpVZjxbDFCjiRwta-ZxvWzv5Hq9kXp-pvjMqT5vNak75tVNXS-XOjWD7vv9fziUe2ey2TAhRM02zIZScDkzPZGuWCx9F4a6h_ke6sRuD1tSfgU5aqDEhv7fm4P6eEwtjYZ0r6zn23udzGdBm3ApAtre5mXB0ihBTKaWwAxtLUNgmaEK2XNCwcS_Xcuw5Zr8N-gvwfqAkZ0COwhQL7Eqqa0'></script><script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
   <title>Joseph Park</title>
-  <meta name="description" content="Personal site of Joseph Park — a high school student interested in cybersecurity, computer science research, and violin." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="Joseph Park" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='2'%20y='2'%20width='28'%20height='28'%20fill='%2396A78D'%20stroke='%232b2b2b'%20stroke-width='2'/%3E%3Ctext%20x='16'%20y='23'%20font-family='monospace'%20font-size='16'%20font-weight='700'%20text-anchor='middle'%20fill='%232b2b2b'%3EJP%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Merriweather:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <meta name="description" content="Personal site of Joseph Park — a high school student interested in cybersecurity, computer science research, and violin."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="author" content="Joseph Park"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%2032%2032&#39;%3E%3Crect%20x=&#39;2&#39;%20y=&#39;2&#39;%20width=&#39;28&#39;%20height=&#39;28&#39;%20fill=&#39;%2396A78D&#39;%20stroke=&#39;%232b2b2b&#39;%20stroke-width=&#39;2&#39;/%3E%3Ctext%20x=&#39;16&#39;%20y=&#39;23&#39;%20font-family=&#39;monospace&#39;%20font-size=&#39;16&#39;%20font-weight=&#39;700&#39;%20text-anchor=&#39;middle&#39;%20fill=&#39;%232b2b2b&#39;%3EJP%3C/text%3E%3C/svg%3E"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <script src="./site-data.js"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    nav [role="list"] { scrollbar-width: none; -ms-overflow-style: none; }
+    nav [role="list"]::-webkit-scrollbar { display: none; }
     body { margin: 0; background: #F0F0F0; }
     a { color: #8f3f2d; font-weight: 600; text-decoration: underline; text-decoration-style: wavy; text-decoration-color: var(--accent, #b0503a); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: background .12s ease, color .12s ease; }
     a:hover { background: #f3e2db; color: #6f2f20; }
     :focus-visible { outline: 2.5px solid var(--accent, #b0503a); outline-offset: 2px; }
     ::selection { background: var(--pale, #D9E9CF); }
 
+    /* ---- EXPERIMENT LAYERS (each toggles from the Tweaks panel) -------------
+       Everything below is opt-in via a data-* flag on the root element, so the
+       original look is exactly what you get with every flag off. ----------- */
+
+    /* [1] micro-interactions */
     [data-micro="on"] article { transition: transform .16s ease, box-shadow .16s ease; }
     [data-micro="on"] article:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--sage); }
     [data-micro="on"] [data-lift] { transition: transform .14s ease; }
@@ -34,6 +40,7 @@
     [data-micro="on"] li:hover > span[data-dot] { transform: rotate(45deg) scale(1.15); background: var(--accent); }
     @keyframes jp-wiggle { 0%,100%{transform:rotate(-1.6deg)} 30%{transform:rotate(3deg)} 65%{transform:rotate(-4deg)} }
 
+    /* [2] scroll / load reveal */
     @keyframes jp-rise { from { opacity:0; transform: translateY(14px) } to { opacity:1; transform:none } }
     @media (prefers-reduced-motion: no-preference) {
       [data-anim="on"] section { animation: jp-rise .5s cubic-bezier(.2,.7,.3,1) both; }
@@ -43,30 +50,37 @@
       [data-anim="on"] section:nth-of-type(5) { animation-delay: .24s }
     }
 
+    /* [4] easter egg — butterfly burst (CSS-only motion, sprites removed after) */
     @keyframes jp-fly { from { opacity:0; transform: translate(-50%,-50%) scale(.3) } 12% { opacity:1 } to { opacity:0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--r)) scale(1) } }
     @keyframes jp-flap { from { transform: scaleX(.35) } to { transform: scaleX(1) } }
     .jp-bfly { position:fixed; left:50%; top:50%; width:var(--s); height:var(--s); animation: jp-fly 4.6s cubic-bezier(.15,.6,.4,1) var(--d) both; pointer-events:none; }
     .jp-bfly img { width:100%; height:100%; image-rendering: pixelated; animation: jp-flap .26s steps(2) infinite alternate; }
 
+    /* [3] custom cursors — all keep a real arrow silhouette with a hard ink
+       outline (visible on light AND dark areas) and a true 1px hotspot at the
+       arrow tip, so tracking and precision are unchanged from the system one.
+       Every rule falls back to the native cursor keyword. */
     [data-cursor="sage"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%2396A78D' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
     [data-cursor="sage"] a, [data-cursor="sage"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23b0503a' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, pointer; }
 
     [data-cursor="ink"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%232b2b2b' stroke='%23F0F0F0' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
     [data-cursor="ink"] a, [data-cursor="ink"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='28'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%232b2b2b' stroke='%23F0F0F0' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='6' r='3.5' fill='%23b0503a' stroke='%23F0F0F0' stroke-width='1.5'/%3E%3C/svg%3E") 3 2, pointer; }
 
+    /* sticker: same arrow with an offset ink shadow, matching the site's
+       3px-hard-shadow language. Slightly heavier — best on the dotted bg. */
     [data-cursor="sticker"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='30'%3E%3Cpath d='M6 5 L6 23 L11 18.5 L14 25.5 L17.5 24 L14.6 17.4 L21 17 Z' fill='%232b2b2b'/%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23D9E9CF' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
     [data-cursor="sticker"] a, [data-cursor="sticker"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='30'%3E%3Cpath d='M6 5 L6 23 L11 18.5 L14 25.5 L17.5 24 L14.6 17.4 L21 17 Z' fill='%232b2b2b'/%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23b0503a' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, pointer; }
   </style>
 </helmet>
 
-<div ref="{{ setRootRef }}" style="--ink:#2b2b2b; --body:#33332f; --muted:#6a6a66; --sage:#96A78D; --mid:#B6CEB4; --pale:#D9E9CF; --rule:#cdd4c4; --tint:#f4f7ef; --accent:#b0503a; --font-head:'Spectral',Georgia,serif; --font-body:'Hanken Grotesk',system-ui,sans-serif; --font-label:'Space Mono',ui-monospace,monospace; font-family:var(--font-body); color:var(--ink); background:#F0F0F0; background-image:radial-gradient(#dce1d6 1.4px, transparent 1.4px); background-size:20px 20px; min-height:100vh; -webkit-font-smoothing:antialiased;">
+<div ref="{{ setRootRef }}" style="--ink:#2b2b2b; --body:#33332f; --muted:#6a6a66; --sage:#96A78D; --mid:#B6CEB4; --pale:#D9E9CF; --rule:#cdd4c4; --tint:#f4f7ef; --accent:#b0503a; --font-head:&#39;Spectral&#39;,Georgia,serif; --font-body:&#39;Hanken Grotesk&#39;,system-ui,sans-serif; --font-label:&#39;Space Mono&#39;,ui-monospace,monospace; font-family:var(--font-body); color:var(--ink); background:#F0F0F0; background-image:radial-gradient(#dce1d6 1.4px, transparent 1.4px); background-size:20px 20px; min-height:100vh; -webkit-font-smoothing:antialiased;">
 
-  <nav aria-label="Primary" style="position:sticky; top:0; z-index:20; background:var(--sage); border-bottom:3px solid var(--ink);">
+  <nav aria-label="Primary" style="position:sticky; top:0; z-index:20; background:var(--nav-bg,var(--sage)); border-bottom:var(--nav-border,3px solid var(--ink));">
     <div style="max-width:880px; margin:0 auto; padding:11px 22px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px;">
-      <a href="#home" data-wiggle="1" style="background:var(--ink); color:#F0F0F0; text-decoration:none; font-family:var(--font-label); font-weight:700; font-size:14px; letter-spacing:.5px; padding:6px 11px; transform:rotate(-2deg); box-shadow:3px 3px 0 rgba(0,0,0,.2);">JOSEPH&nbsp;PARK</a>
-      <div role="list" style="display:flex; flex-wrap:wrap; gap:5px; margin-left:auto;">
+      <a href="#home" data-wiggle="1" style="background:var(--nav-mark-bg,var(--ink)); color:var(--nav-mark-fg,#F0F0F0); text-decoration:none; font-family:var(--font-label); font-weight:700; font-size:14px; letter-spacing:.5px; padding:6px 11px; transform:rotate(-2deg); box-shadow:3px 3px 0 rgba(0,0,0,.2);">JOSEPH&nbsp;PARK</a>
+      <div role="list" style="display:flex; gap:5px; margin-left:auto; overflow-x:auto; max-width:100%; overscroll-behavior-x:contain;">
         <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
-          <a role="listitem" href="{{ n.href }}" onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="background:#F0F0F0;">{{ n.label }}</a>
+          <a role="listitem" href="{{ n.href }}" onclick="{{ n.onClick }}" style="{{ n.style }}" style-hover="background:var(--nav-hover,#F0F0F0);">{{ n.label }}</a>
         </sc-for>
       </div>
     </div>
@@ -198,7 +212,7 @@
       </div>
     </section>
 
-    <section id="work" data-navid="work" data-screen-label="Selected Works & Activities" ref="{{ setSecRef }}" style="padding:14px 0 40px; scroll-margin-top:70px;">
+    <section id="work" data-navid="work" data-screen-label="Selected Works &amp; Activities" ref="{{ setSecRef }}" style="padding:14px 0 40px; scroll-margin-top:70px;">
       <div style="border-top:3px solid var(--ink); padding-top:16px; margin-bottom:24px;">
         <span data-wiggle="1" style="{{ eyebrowStyle }}">01 / STEM</span>
         <h2 style="font-family:var(--font-head); font-size:33px; font-weight:600; letter-spacing:-.4px; margin:12px 0 0;">{{ workTitle }}</h2>
@@ -369,9 +383,9 @@
         <span data-wiggle="1" style="font-family:var(--font-label); font-size:11px; font-weight:700; background:var(--ink); color:#F0F0F0; padding:4px 9px; transform:rotate(-1.5deg); display:inline-block;">© 2026 - Thank you for visiting!</span>
         <span style="font-family:var(--font-label); font-size:12px; color:var(--muted);">Joseph Park · Keep Looking...</span>
       </div>
-      <span style="font-family:var(--font-label); font-size:15px; color:black; line-height:1.55; max-width:74ch;">AI DISCLOSURE: This website was created and customized with the assistance of AI tools. The writing, content, and design choices are all mine and human. </span>
+      <span style="font-family:var(--font-label); font-size:15px; color:#000; line-height:1.55; max-width:74ch;">AI DISCLOSURE: This website was created and customized with the assistance of AI tools. The writing, content, and design choices are all mine and human.</span>
       <sc-if value="{{ eggHint }}" hint-placeholder-val="{{ false }}">
-        <span style="font-family:var(--font-label); font-size:10.5px; color:black; letter-spacing:1px;">type "capture-the-flag" for a surprise</span>
+        <span style="font-family:var(--font-label); font-size:10.5px; color:#000; letter-spacing:1px;">type &ldquo;capture-the-flag&rdquo; for a surprise</span>
       </sc-if>
     </footer>
 
@@ -385,17 +399,18 @@
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;headingFont&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Spectral (original)&quot;, &quot;Merriweather&quot;, &quot;Palatino / Book Antiqua&quot;, &quot;Lora&quot;], &quot;default&quot;: &quot;Palatino / Book Antiqua&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;foundation&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Original sage&quot;, &quot;Deeper sage&quot;, &quot;Deepest sage&quot;], &quot;default&quot;: &quot;Deeper sage&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;background&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Dots (original)&quot;, &quot;Plain paper&quot;, &quot;Graph grid&quot;, &quot;Diagonal hatch&quot;, &quot;Notebook rule&quot;, &quot;Sage wash&quot;, &quot;Cross ticks&quot;], &quot;default&quot;: &quot;Cross ticks&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;bioLayout&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Original block&quot;, &quot;Lead + question cards&quot;, &quot;Lead + questions + interests&quot;, &quot;Two-column field notes&quot;, &quot;Terminal readme&quot;, &quot;Numbered question ticket&quot;], &quot;default&quot;: &quot;Numbered question ticket&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;cursorStyle&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;System (original)&quot;, &quot;Sage arrow&quot;, &quot;Ink arrow&quot;, &quot;Sticker arrow&quot;], &quot;default&quot;: &quot;Sage arrow&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;microInteractions&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;loadAnimation&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;easterEgg&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
-  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#AD781B&quot;, &quot;options&quot;: [&quot;#AD781B&quot;, &quot;#b0503a&quot;, &quot;#2f6d63&quot;, &quot;#9c4a6a&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Style&quot; },
-  &quot;courseworkStyle&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;chips&quot;, &quot;list&quot;], &quot;default&quot;: &quot;chips&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Style&quot; }
+<script type="text/x-dc" data-dc-script="" data-props="{
+  &#34;headingFont&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;Spectral (original)&#34;, &#34;Merriweather&#34;, &#34;Palatino / Book Antiqua&#34;, &#34;Lora&#34;], &#34;default&#34;: &#34;Palatino / Book Antiqua&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;foundation&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;Original sage&#34;, &#34;Deeper sage&#34;, &#34;Deepest sage&#34;, &#34;Slate blue&#34;, &#34;Muted teal&#34;, &#34;Warm grey&#34;], &#34;default&#34;: &#34;Muted teal&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;navStyle&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;Solid foundation (original)&#34;, &#34;Ink bar&#34;, &#34;Paper strip&#34;, &#34;Pale wash&#34;, &#34;Accent bar&#34;], &#34;default&#34;: &#34;Solid foundation (original)&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;background&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;Dots (original)&#34;, &#34;Plain paper&#34;, &#34;Graph grid&#34;, &#34;Diagonal hatch&#34;, &#34;Notebook rule&#34;, &#34;Sage wash&#34;, &#34;Cross ticks&#34;], &#34;default&#34;: &#34;Cross ticks&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;bioLayout&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;Original block&#34;, &#34;Lead + question cards&#34;, &#34;Lead + questions + interests&#34;, &#34;Two-column field notes&#34;, &#34;Terminal readme&#34;, &#34;Numbered question ticket&#34;], &#34;default&#34;: &#34;Numbered question ticket&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;cursorStyle&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;System (original)&#34;, &#34;Sage arrow&#34;, &#34;Ink arrow&#34;, &#34;Sticker arrow&#34;], &#34;default&#34;: &#34;Sage arrow&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;microInteractions&#34;: { &#34;editor&#34;: &#34;boolean&#34;, &#34;default&#34;: true, &#34;tsType&#34;: &#34;boolean&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;loadAnimation&#34;: { &#34;editor&#34;: &#34;boolean&#34;, &#34;default&#34;: true, &#34;tsType&#34;: &#34;boolean&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;easterEgg&#34;: { &#34;editor&#34;: &#34;boolean&#34;, &#34;default&#34;: true, &#34;tsType&#34;: &#34;boolean&#34;, &#34;section&#34;: &#34;Experiments&#34; },
+  &#34;accentColor&#34;: { &#34;editor&#34;: &#34;color&#34;, &#34;default&#34;: &#34;#AD781B&#34;, &#34;options&#34;: [&#34;#AD781B&#34;, &#34;#b0503a&#34;, &#34;#2f6d63&#34;, &#34;#9c4a6a&#34;], &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Style&#34; },
+  &#34;courseworkStyle&#34;: { &#34;editor&#34;: &#34;enum&#34;, &#34;options&#34;: [&#34;chips&#34;, &#34;list&#34;], &#34;default&#34;: &#34;chips&#34;, &#34;tsType&#34;: &#34;string&#34;, &#34;section&#34;: &#34;Style&#34; }
 }">
 const FONT_SETS = {
   "Spectral (original)": "'Spectral', Georgia, serif",
@@ -404,12 +419,42 @@ const FONT_SETS = {
   "Lora": "'Lora', Georgia, serif"
 };
 
+// Foundation palettes. "Original" is byte-for-byte the current site.
 const FOUNDATIONS = {
   "Original sage":  { sage: "#96A78D", mid: "#B6CEB4", pale: "#D9E9CF", rule: "#cdd4c4", tint: "#f4f7ef" },
   "Deeper sage":    { sage: "#7E9377", mid: "#A6C0A2", pale: "#CFE2C4", rule: "#c2ccb8", tint: "#f1f5ec" },
-  "Deepest sage":   { sage: "#65805F", mid: "#93AF8E", pale: "#C4D9B8", rule: "#b6c3ac", tint: "#eef3e8" }
+  "Deepest sage":   { sage: "#65805F", mid: "#93AF8E", pale: "#C4D9B8", rule: "#b6c3ac", tint: "#eef3e8" },
+  // Alternatives to sage — same ink-on-paper logic, different base hue.
+  "Slate blue":     { sage: "#7C8B9E", mid: "#A8B7C8", pale: "#CFDBE6", rule: "#c0c7d0", tint: "#f0f3f7" },
+  "Muted teal":     { sage: "#6E9490", mid: "#9CBDB8", pale: "#C6DEDA", rule: "#bccbc8", tint: "#eef5f3" },
+  "Warm grey":      { sage: "#918C83", mid: "#BDB7AC", pale: "#DCD6C9", rule: "#cbc5b9", tint: "#f5f3ee" }
 };
 
+// Nav bar treatments. Each returns the CSS vars the nav reads.
+const NAV_STYLES = {
+  "Solid foundation (original)": () => ({}),
+  "Ink bar": () => ({
+    "--nav-bg": "#2b2b2b", "--nav-fg": "#EDEDE7", "--nav-border": "3px solid var(--sage)",
+    "--nav-active-bg": "#F0F0F0", "--nav-active-fg": "#2b2b2b",
+    "--nav-hover": "rgba(255,255,255,.16)",
+    "--nav-mark-bg": "var(--sage)", "--nav-mark-fg": "#20241d"
+  }),
+  "Paper strip": () => ({
+    "--nav-bg": "#F0F0F0", "--nav-border": "3px solid var(--ink)", "--nav-hover": "var(--pale)"
+  }),
+  "Pale wash": () => ({
+    "--nav-bg": "var(--pale)", "--nav-border": "2px solid var(--sage)", "--nav-hover": "#ffffff"
+  }),
+  "Accent bar": (accent) => ({
+    "--nav-bg": accent, "--nav-fg": "#FBF3EF", "--nav-border": "3px solid var(--ink)",
+    "--nav-active-bg": "#2b2b2b", "--nav-active-fg": "#F0F0F0",
+    "--nav-hover": "rgba(255,255,255,.2)",
+    "--nav-mark-bg": "#2b2b2b", "--nav-mark-fg": "#F0F0F0"
+  })
+};
+
+// Backgrounds: pure CSS gradients (no images, no JS) — swapping one is two
+// property writes. Colors are literal so they read the same at every depth.
 const BACKGROUNDS = {
   "Dots (original)": { image: "radial-gradient(#dce1d6 1.4px, transparent 1.4px)", size: "20px 20px" },
   "Plain paper":     { image: "none", size: "auto" },
@@ -420,6 +465,7 @@ const BACKGROUNDS = {
   "Cross ticks":     { image: "linear-gradient(#dde3d7 1.2px, transparent 1.2px), linear-gradient(90deg, #dde3d7 1.2px, transparent 1.2px)", size: "24px 6px, 6px 24px" }
 };
 
+// Glyph per interest (add an `icon:` field in site-data.js to override).
 const ICONS = {
   "puzzles": "▦", "violin": "♪", "soccer": "◉", "reading & writing": "✎",
   "movies": "▶", "cs club": "❯", "skateboarding": "◗"
@@ -457,21 +503,47 @@ class Component extends DCLogic {
 
   componentDidUpdate() {
     this.applyTheme();
-    if (this.state.data && !this.obs && this.sectionEls.length) {
-      this.obs = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) this.setState({ activeId: e.target.dataset.navid }); });
-      }, { rootMargin: "-45% 0px -50% 0px" });
-      this.sectionEls.forEach((el) => this.obs.observe(el));
+    if (this.state.data && !this.spyBound && this.sectionEls.length) {
+      this.spyBound = true;
+      // rAF-throttled position scan: deterministic (no observer dead zone where
+      // no section qualifies and the pill sticks on the wrong item).
+      this.onScroll = () => {
+        if (this.rafId) return;
+        this.rafId = requestAnimationFrame(() => { this.rafId = 0; this.syncActive(); });
+      };
+      addEventListener("scroll", this.onScroll, { passive: true });
+      addEventListener("resize", this.onScroll, { passive: true });
+      this.syncActive();
     }
   }
 
   componentWillUnmount() {
-    if (this.obs) this.obs.disconnect();
+    if (this.onScroll) { removeEventListener("scroll", this.onScroll); removeEventListener("resize", this.onScroll); }
+    if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.releaseFn) this.releaseFn();
+    clearTimeout(this.navT);
     clearTimeout(this.eggT);
     window.removeEventListener("keydown", this.onKey);
   }
 
+  // --- theme -------------------------------------------------------------
   accent() { return this.state.fileAccent || this.props.accentColor || "#b0503a"; }
+
+  // Heading webfonts are not in the initial <link> — fetch one only if picked.
+  ensureFont(name) {
+    const NEED = {
+      "Spectral (original)": "Spectral:wght@400;500;600",
+      "Merriweather": "Merriweather:wght@400;700",
+      "Lora": "Lora:wght@400;600;700"
+    };
+    const q = NEED[name];
+    if (!q) return;
+    const href = "https://fonts.googleapis.com/css2?family=" + q + "&display=swap";
+    if (document.querySelector('link[href="' + href + '"]')) return;
+    const l = document.createElement("link");
+    l.rel = "stylesheet"; l.href = href;
+    document.head.appendChild(l);
+  }
 
   applyTheme() {
     const el = this.rootEl;
@@ -479,6 +551,7 @@ class Component extends DCLogic {
     const p = this.props;
     const f = this.state.fonts || {};
     const head = FONT_SETS[p.headingFont] || f.heading || FONT_SETS["Spectral (original)"];
+    this.ensureFont(p.headingFont);
     const vars = {
       "--font-head": head,
       "--font-body": f.body || "'Hanken Grotesk', system-ui, sans-serif",
@@ -487,6 +560,10 @@ class Component extends DCLogic {
     };
     const found = FOUNDATIONS[p.foundation] || FOUNDATIONS["Original sage"];
     Object.keys(found).forEach((k) => { vars["--" + k] = found[k]; });
+    ["--nav-bg","--nav-fg","--nav-border","--nav-active-bg","--nav-active-fg","--nav-hover","--nav-mark-bg","--nav-mark-fg"]
+      .forEach((k) => el.style.removeProperty(k));
+    const navFn = NAV_STYLES[p.navStyle] || NAV_STYLES["Solid foundation (original)"];
+    Object.assign(vars, navFn(this.accent()));
     Object.keys(vars).forEach((k) => el.style.setProperty(k, vars[k]));
     const bg = BACKGROUNDS[p.background] || BACKGROUNDS["Dots (original)"];
     el.style.backgroundImage = bg.image;
@@ -497,20 +574,90 @@ class Component extends DCLogic {
     el.dataset.cursor = { "Sage arrow": "sage", "Ink arrow": "ink", "Sticker arrow": "sticker" }[p.cursorStyle] || "off";
   }
 
+  // --- helpers -----------------------------------------------------------
+  navH() {
+    const n = this.rootEl && this.rootEl.querySelector("nav");
+    return n ? Math.round(n.getBoundingClientRect().height) : 58;
+  }
+
+  // Nearest-section scan: no pass/fail threshold, so there is no dead zone at
+  // either end regardless of section height or viewport size. Prefer the last
+  // section at or above the line; if none is (very top of page), take the one
+  // closest to it.
+  syncActive() {
+    if (this.navLock) return;
+    const els = this.sectionEls.filter((el) => el.isConnected);
+    if (!els.length) return;
+    const line = this.navH() + 24;
+    let best = null, bestAbove = null;
+    els.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      const d = Math.abs(top - line);
+      if (top <= line + 1 && (!bestAbove || top > bestAbove.top)) bestAbove = { el, top };
+      if (!best || d < best.d) best = { el, d };
+    });
+    // Bottom of the document: the final section is often too short to reach the
+    // line at all, so it wins outright once we cannot scroll any further.
+    const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 40;
+    const pick = atEnd ? els[els.length - 1] : (bestAbove ? bestAbove.el : best.el);
+    const id = pick && pick.dataset.navid;
+    if (id && id !== this.state.activeId) this.setState({ activeId: id });
+  }
+
+  // Release the spy when scrolling actually stops, not on a guessed duration —
+  // a long jump animates well past any fixed timeout.
+  unlockOnScrollEnd() {
+    clearTimeout(this.navT);
+    if (this.releaseFn) this.releaseFn();
+    const done = () => {
+      this.releaseFn = null;
+      this.navLock = false;
+      this.syncActive();
+    };
+    if ("onscrollend" in window) {
+      const h = () => { removeEventListener("scrollend", h); clearTimeout(this.navT); done(); };
+      this.releaseFn = () => removeEventListener("scrollend", h);
+      addEventListener("scrollend", h);
+      this.navT = setTimeout(() => { removeEventListener("scrollend", h); done(); }, 3000);
+      return;
+    }
+    let last = scrollY, still = 0, raf = 0, stop = false;
+    this.releaseFn = () => { stop = true; cancelAnimationFrame(raf); };
+    const tick = () => {
+      if (stop) return;
+      if (scrollY === last) still++; else { still = 0; last = scrollY; }
+      if (still >= 3) { done(); return; }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    this.navT = setTimeout(() => { stop = true; cancelAnimationFrame(raf); done(); }, 3000);
+  }
+
   handleNav(ev, id) {
     if (ev) ev.preventDefault();
     const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 58;
-      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
-    }
     this.setState({ activeId: id });
+    if (!el) return;
+    // Lock the spy while the smooth scroll flies past intermediate sections,
+    // otherwise the active pill strobes through every one on the way.
+    this.navLock = true;
+    clearTimeout(this.navT);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const top = Math.max(el.getBoundingClientRect().top + scrollY - this.navH() - 8, 0);
+    scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
+    if (reduce) { this.navT = setTimeout(() => { this.navLock = false; this.syncActive(); }, 50); }
+    else { this.unlockOnScrollEnd(); }
   }
 
   splitParagraphs(text) {
     return (text || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
   }
 
+  // Structured bio: keeps every word, just re-groups the first paragraph into
+  // a lead sentence-run plus the open questions it poses.
+  // One parse, six presentations. Every mode shows the same words —
+  // lead sentences, the questions the first paragraph asks, remaining
+  // paragraphs, and (where the layout uses them) the interests list.
   buildBio(bioText, interestList) {
     const paras = this.splitParagraphs(bioText);
     const mode = this.props.bioLayout || "Original block";
@@ -532,6 +679,7 @@ class Component extends DCLogic {
     return Object.assign(flags, {
       paragraphs: paras,
       lead: sentences.filter((s) => !s.endsWith("?")).join(" "),
+      // The "my interests lie in…" sentence is set bold; everything else plain.
       leadParts: sentences.filter((s) => !s.endsWith("?")).map((text) => ({
         text, style: /interests lie/i.test(text) ? "font-weight:700;" : "font-weight:inherit;"
       })),
@@ -672,10 +820,10 @@ class Component extends DCLogic {
 
   buildNav() {
     const items = [["home", "Home"], ["work", "Work"], ["academics", "Academics"], ["other", "Misc"], ["contact", "Contact"]];
-    const base = "font-family:var(--font-label); font-size:12px; font-weight:400; text-decoration:none; padding:5px 8px;";
+    const base = "font-family:var(--font-label); font-size:12px; font-weight:400; text-decoration:none; padding:7px 9px; flex:none; white-space:nowrap; border-radius:2px;";
     return items.map(([id, label]) => ({
       href: "#" + id, label,
-      style: base + (id === this.state.activeId ? " background:#2b2b2b; color:#F0F0F0;" : " color:#2b2b2b;"),
+      style: base + (id === this.state.activeId ? " background:var(--nav-active-bg,#2b2b2b); color:var(--nav-active-fg,#F0F0F0);" : " color:var(--nav-fg,#2b2b2b);"),
       onClick: (ev) => this.handleNav(ev, id)
     }));
   }
