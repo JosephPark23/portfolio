@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Joseph Park</title>
+  <meta name="description" content="Personal site of Joseph Park — a high school student interested in cybersecurity, computer science research, and violin." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Joseph Park" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='2'%20y='2'%20width='28'%20height='28'%20fill='%2396A78D'%20stroke='%232b2b2b'%20stroke-width='2'/%3E%3Ctext%20x='16'%20y='23'%20font-family='monospace'%20font-size='16'%20font-weight='700'%20text-anchor='middle'%20fill='%232b2b2b'%3EJP%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Merriweather:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <script src="./site-data.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #F0F0F0; }
+    a { color: #8f3f2d; font-weight: 600; text-decoration: underline; text-decoration-style: wavy; text-decoration-color: var(--accent, #b0503a); text-underline-offset: 3px; text-decoration-thickness: 1.5px; transition: background .12s ease, color .12s ease; }
+    a:hover { background: #f3e2db; color: #6f2f20; }
+    :focus-visible { outline: 2.5px solid var(--accent, #b0503a); outline-offset: 2px; }
+    ::selection { background: var(--pale, #D9E9CF); }
+
+    [data-micro="on"] article { transition: transform .16s ease, box-shadow .16s ease; }
+    [data-micro="on"] article:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--sage); }
+    [data-micro="on"] [data-lift] { transition: transform .14s ease; }
+    [data-micro="on"] [data-lift]:hover { transform: translateY(-2px) rotate(-1deg); }
+    [data-micro="on"] [data-wiggle]:hover { animation: jp-wiggle .4s ease; }
+    [data-micro="on"] li > span[data-dot] { transition: transform .16s ease, background .16s ease; }
+    [data-micro="on"] li:hover > span[data-dot] { transform: rotate(45deg) scale(1.15); background: var(--accent); }
+    @keyframes jp-wiggle { 0%,100%{transform:rotate(-1.6deg)} 30%{transform:rotate(3deg)} 65%{transform:rotate(-4deg)} }
+
+    @keyframes jp-rise { from { opacity:0; transform: translateY(14px) } to { opacity:1; transform:none } }
+    @media (prefers-reduced-motion: no-preference) {
+      [data-anim="on"] section { animation: jp-rise .5s cubic-bezier(.2,.7,.3,1) both; }
+      [data-anim="on"] section:nth-of-type(2) { animation-delay: .06s }
+      [data-anim="on"] section:nth-of-type(3) { animation-delay: .12s }
+      [data-anim="on"] section:nth-of-type(4) { animation-delay: .18s }
+      [data-anim="on"] section:nth-of-type(5) { animation-delay: .24s }
+    }
+
+    @keyframes jp-fly { from { opacity:0; transform: translate(-50%,-50%) scale(.3) } 12% { opacity:1 } to { opacity:0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(var(--r)) scale(1) } }
+    @keyframes jp-flap { from { transform: scaleX(.35) } to { transform: scaleX(1) } }
+    .jp-bfly { position:fixed; left:50%; top:50%; width:var(--s); height:var(--s); animation: jp-fly 4.6s cubic-bezier(.15,.6,.4,1) var(--d) both; pointer-events:none; }
+    .jp-bfly img { width:100%; height:100%; image-rendering: pixelated; animation: jp-flap .26s steps(2) infinite alternate; }
+
+    [data-cursor="sage"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%2396A78D' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
+    [data-cursor="sage"] a, [data-cursor="sage"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23b0503a' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, pointer; }
+
+    [data-cursor="ink"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%232b2b2b' stroke='%23F0F0F0' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
+    [data-cursor="ink"] a, [data-cursor="ink"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='28'%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%232b2b2b' stroke='%23F0F0F0' stroke-width='2' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='6' r='3.5' fill='%23b0503a' stroke='%23F0F0F0' stroke-width='1.5'/%3E%3C/svg%3E") 3 2, pointer; }
+
+    [data-cursor="sticker"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='30'%3E%3Cpath d='M6 5 L6 23 L11 18.5 L14 25.5 L17.5 24 L14.6 17.4 L21 17 Z' fill='%232b2b2b'/%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23D9E9CF' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto; }
+    [data-cursor="sticker"] a, [data-cursor="sticker"] button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='30'%3E%3Cpath d='M6 5 L6 23 L11 18.5 L14 25.5 L17.5 24 L14.6 17.4 L21 17 Z' fill='%232b2b2b'/%3E%3Cpath d='M3 2 L3 20 L8 15.5 L11 22.5 L14.5 21 L11.6 14.4 L18 14 Z' fill='%23b0503a' stroke='%232b2b2b' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, pointer; }
+  </style>
+</helmet>
+
+<div ref="{{ setRootRef }}" style="--ink:#2b2b2b; --body:#33332f; --muted:#6a6a66; --sage:#96A78D; --mid:#B6CEB4; --pale:#D9E9CF; --rule:#cdd4c4; --tint:#f4f7ef; --accent:#b0503a; --font-head:'Spectral',Georgia,serif; --font-body:'Hanken Grotesk',system-ui,sans-serif; --font-label:'Space Mono',ui-monospace,monospace; font-family:var(--font-body); color:var(--ink); background:#F0F0F0; background-image:radial-gradient(#dce1d6 1.4px, transparent 1.4px); background-size:20px 20px; min-height:100vh; -webkit-font-smoothing:antialiased;">
+
+  <nav aria-label="Primary" style="position:sticky; top:0; z-index:20; background:var(--sage); border-bottom:3px solid var(--ink);">
+    <div style="max-width:880px; margin:0 auto; padding:11px 22px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px;">
+      <a href="#home" data-wiggle="1" style="background:var(--ink); color:#F0F0F0; text-decoration:none; font-family:var(--font-label); font-weight:700; font-size:14px; letter-spacing:.5px; padding:6px 11px; transform:rotate(-2deg); box-shadow:3px 3px 0 rgba(0,0,0,.2);">JOSEPH&nbsp;PARK</a>
+      <div role="list" style="display:flex; flex-wrap:wrap; gap:5px; margin-left:auto;">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a role="listitem" href="{{ n.href }}" onClick="{{ n.onClick }}" style="{{ n.style }}" style-hover="background:#F0F0F0;">{{ n.label }}</a>
+        </sc-for>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width:880px; margin:0 auto; padding:0 22px;">
+
+    <section id="home" data-navid="home" data-screen-label="Home" ref="{{ setSecRef }}" style="padding:52px 0 46px; scroll-margin-top:70px;">
+      <span data-wiggle="1" style="display:inline-block; font-family:var(--font-label); font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--ink); background:var(--mid); border:2px solid var(--ink); padding:4px 10px; transform:rotate(-1.6deg); box-shadow:3px 3px 0 var(--ink);">hello</span>
+      <h1 style="font-family:var(--font-head); font-size:56px; line-height:1.02; font-weight:600; letter-spacing:-1px; margin:18px 0 0; padding-bottom:30px;"><span style="background:var(--pale); box-shadow:0 -1px 0 var(--pale), 0 6px 0 var(--pale); padding:0 5px;">Joseph Park</span></h1>
+
+      <sc-if value="{{ bio.plain }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ bio.paragraphs }}" as="para" hint-placeholder-count="2">
+          <p style="font-size:17px; line-height:1.65; max-width:80ch; margin:0 0 14px; color:var(--body); text-wrap:pretty;">{{ para }}</p>
+        </sc-for>
+      </sc-if>
+
+      <sc-if value="{{ bio.structured }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:var(--font-head); font-size:21px; line-height:1.5; max-width:56ch; margin:0 0 22px; color:var(--ink); text-wrap:pretty;">{{ bio.lead }}</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin:0 0 22px;">
+          <sc-for list="{{ bio.questions }}" as="q" hint-placeholder-count="3">
+            <div data-lift="1" style="border:2px solid var(--ink); border-left:6px solid var(--accent); background:#fff; padding:12px 14px; box-shadow:3px 3px 0 var(--sage);">
+              <span style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.2px; color:var(--accent);">Q</span>
+              <p style="font-size:14.5px; line-height:1.5; color:var(--body); margin:4px 0 0; text-wrap:pretty;">{{ q }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ bio.hasInterests }}" hint-placeholder-val="{{ false }}">
+          <div style="border-top:2px dashed var(--rule); padding-top:14px; margin:0 0 20px;">
+            <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin:0 0 10px;">Also me</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px;">
+              <sc-for list="{{ bio.interests }}" as="it" hint-placeholder-count="6">
+                <div data-lift="1" style="border:2px solid var(--ink); background:var(--tint); padding:9px 11px; box-shadow:3px 3px 0 var(--mid);">
+                  <p style="font-family:var(--font-label); font-size:11.5px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--ink); margin:0;">{{ it.label }}</p>
+                  <p style="font-size:13px; line-height:1.45; color:var(--muted); margin:3px 0 0; text-wrap:pretty;">{{ it.note }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <div style="border-top:2px dashed var(--rule); padding-top:16px; margin-bottom:6px;">
+          <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin:0 0 8px;">Off the clock</p>
+          <sc-for list="{{ bio.rest }}" as="para" hint-placeholder-count="1">
+            <p style="font-size:16.5px; line-height:1.65; max-width:64ch; margin:0 0 12px; color:var(--body); text-wrap:pretty;">{{ para }}</p>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bio.twoCol }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:minmax(0,1.55fr) minmax(230px,1fr); gap:26px; align-items:start; margin:0 0 22px;">
+          <div>
+            <p style="font-family:var(--font-head); font-size:20px; line-height:1.5; margin:0 0 14px; color:var(--ink); text-wrap:pretty;">{{ bio.lead }}</p>
+            <sc-for list="{{ bio.rest }}" as="para" hint-placeholder-count="1">
+              <p style="font-size:16px; line-height:1.65; margin:0 0 12px; color:var(--body); text-wrap:pretty;">{{ para }}</p>
+            </sc-for>
+          </div>
+          <aside style="border-left:3px solid var(--ink); padding-left:14px;">
+            <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin:0 0 8px;">Open questions</p>
+            <ul style="list-style:none; padding:0; margin:0 0 16px; display:flex; flex-direction:column; gap:9px;">
+              <sc-for list="{{ bio.questions }}" as="q" hint-placeholder-count="3">
+                <li style="font-size:13.5px; line-height:1.45; color:var(--body); text-wrap:pretty;">{{ q }}</li>
+              </sc-for>
+            </ul>
+            <sc-if value="{{ bio.hasInterests }}">
+              <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin:0 0 8px;">Also me</p>
+              <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                <sc-for list="{{ bio.interests }}" as="it" hint-placeholder-count="6">
+                  <span data-lift="1" style="font-family:var(--font-label); font-size:11.5px; color:var(--ink); background:var(--pale); border:1.5px solid var(--ink); padding:3px 7px;">{{ it.label }}</span>
+                </sc-for>
+              </div>
+            </sc-if>
+          </aside>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bio.terminal }}" hint-placeholder-val="{{ false }}">
+        <div style="border:2.5px solid var(--ink); background:#22261f; color:#e8eede; padding:18px 20px; box-shadow:6px 6px 0 var(--sage); margin:0 0 22px; font-family:var(--font-label); font-size:13.5px; line-height:1.6; overflow-x:auto;">
+          <p style="margin:0 0 4px; color:var(--mid);">$ whoami</p>
+          <p style="margin:0 0 16px; color:#e8eede; text-wrap:pretty;">{{ bio.lead }}</p>
+          <p style="margin:0 0 4px; color:var(--mid);">$ cat open-questions.txt</p>
+          <sc-for list="{{ bio.questions }}" as="q" hint-placeholder-count="3">
+            <p style="margin:0 0 5px; padding-left:14px; position:relative; text-wrap:pretty;"><span style="position:absolute; left:0; color:var(--accent);">›</span>{{ q }}</p>
+          </sc-for>
+          <sc-if value="{{ bio.hasInterests }}">
+            <p style="margin:16px 0 6px; color:var(--mid);">$ ls interests/</p>
+            <div style="display:flex; flex-wrap:wrap; gap:6px 10px;">
+              <sc-for list="{{ bio.interests }}" as="it" hint-placeholder-count="6">
+                <span style="border:1px solid #57614d; padding:2px 7px; font-size:12px;">{{ it.label }}</span>
+              </sc-for>
+            </div>
+          </sc-if>
+          <p style="margin:16px 0 4px; color:var(--mid);">$ tail bio.md</p>
+          <sc-for list="{{ bio.rest }}" as="para" hint-placeholder-count="1">
+            <p style="margin:0 0 8px; font-family:var(--font-body); font-size:15px; line-height:1.6; text-wrap:pretty;">{{ para }}</p>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bio.ticket }}" hint-placeholder-val="{{ false }}">
+        <p style="font-family:var(--font-head); font-size:21px; line-height:1.5; max-width:58ch; margin:0 0 20px; color:var(--ink); text-wrap:pretty;"><sc-for list="{{ bio.leadParts }}" as="s" hint-placeholder-count="2"><span style="{{ s.style }}">{{ s.text }} </span></sc-for></p>
+        <div style="border-top:3px solid var(--ink); margin:0 0 20px;">
+          <sc-for list="{{ bio.numbered }}" as="q" hint-placeholder-count="3">
+            <div data-lift="1" style="display:flex; gap:14px; align-items:baseline; padding:12px 2px; border-bottom:1px dashed var(--rule);">
+              <span style="font-family:var(--font-label); font-size:12px; font-weight:700; color:var(--accent); min-width:26px;">{{ q.n }}</span>
+              <p style="font-size:16px; line-height:1.5; color:var(--body); margin:0; text-wrap:pretty;">{{ q.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ bio.hasInterests }}">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin:0 0 20px;">
+            <span style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; background:var(--ink); color:#F0F0F0; padding:3px 8px;">Other fax</span>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <sc-for list="{{ bio.interests }}" as="it" hint-placeholder-count="6">
+                <span data-lift="1" title="{{ it.tip }}" aria-label="{{ it.tip }}" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; font-size:15px; line-height:1; color:var(--ink); background:var(--tint); border:2px solid var(--ink); box-shadow:2px 2px 0 var(--mid);">{{ it.icon }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+        <sc-for list="{{ bio.rest }}" as="para" hint-placeholder-count="1">
+          <p style="font-size:16px; line-height:1.65; max-width:64ch; margin:0 0 12px; color:var(--body); text-wrap:pretty;">{{ para }}</p>
+        </sc-for>
+      </sc-if>
+
+      <p style="font-family:var(--font-label); font-size:12.5px; color:var(--muted); margin:0 0 24px;">◎ {{ profile.location }}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <sc-for list="{{ profile.primaryLinks }}" as="l" hint-placeholder-count="2">
+          <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer" style="{{ l.style }}" style-hover="background:var(--pale); transform:translate(-1px,-1px);">{{ l.label }} ↗</a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="work" data-navid="work" data-screen-label="Selected Works & Activities" ref="{{ setSecRef }}" style="padding:14px 0 40px; scroll-margin-top:70px;">
+      <div style="border-top:3px solid var(--ink); padding-top:16px; margin-bottom:24px;">
+        <span data-wiggle="1" style="{{ eyebrowStyle }}">01 / STEM</span>
+        <h2 style="font-family:var(--font-head); font-size:33px; font-weight:600; letter-spacing:-.4px; margin:12px 0 0;">{{ workTitle }}</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <sc-for list="{{ work }}" as="e" hint-placeholder-count="5">
+          <article style="{{ e.wrapStyle }}">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px;">
+              <sc-if value="{{ e.hasTag }}"><span style="{{ e.tagStyle }}">{{ e.tag }}</span></sc-if>
+              <sc-if value="{{ e.hasStatus }}"><span style="{{ e.statusStyle }}">{{ e.status }}</span></sc-if>
+            </div>
+            <sc-if value="{{ e.hasTitleUrl }}" hint-placeholder-val="{{ false }}"><h3 style="font-family:var(--font-head); font-size:23px; font-weight:600; margin:0; line-height:1.2;"><a href="{{ e.titleUrl }}" target="_blank" rel="noopener noreferrer" style="color:inherit;">{{ e.title }}</a></h3></sc-if><sc-if value="{{ e.hasNoTitleUrl }}" hint-placeholder-val="{{ true }}"><h3 style="font-family:var(--font-head); font-size:23px; font-weight:600; margin:0; line-height:1.2;">{{ e.title }}</h3></sc-if>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-top:8px;">
+              <sc-if value="{{ e.hasRole }}"><span style="{{ e.roleStyle }}">{{ e.role }}</span></sc-if>
+              <sc-if value="{{ e.hasYears }}"><span style="font-family:var(--font-label); font-size:12px; color:var(--muted);">{{ e.years }}</span></sc-if>
+            </div>
+            <sc-for list="{{ e.descriptionParagraphs }}" as="para" hint-placeholder-count="1">
+              <p style="font-size:15.5px; line-height:1.6; color:var(--body); margin:11px 0 0; max-width:68ch; text-wrap:pretty;">{{ para }}</p>
+            </sc-for>
+            <sc-if value="{{ e.hasBullets }}">
+              <ul style="list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:7px;">
+                <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="2">
+                  <li style="font-size:14.5px; color:var(--body); line-height:1.55; padding-left:20px; position:relative;"><span data-dot="1" style="position:absolute; left:0; top:3px; width:8px; height:8px; background:var(--sage); border:1.5px solid var(--ink);"></span>{{ b }}</li>
+                </sc-for>
+              </ul>
+            </sc-if>
+            <sc-if value="{{ e.hasResults }}">
+              <div style="margin:14px 0 0; border-top:2px solid var(--ink);">
+                <sc-for list="{{ e.results }}" as="r" hint-placeholder-count="4">
+                  <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 14px; padding:10px 0; border-bottom:1px dashed var(--rule);">
+                    <div style="flex:1 1 60%; min-width:210px;">
+                      <span style="{{ r.compStyle }}">{{ r.competition }}</span><sc-if value="{{ r.hasSeason }}"><span style="font-family:var(--font-label); font-size:11px; color:var(--muted);"> · {{ r.season }}</span></sc-if>
+                      <div style="font-size:14.5px; color:var(--body); line-height:1.5; margin-top:3px;">{{ r.result }}</div>
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:6px 12px; align-items:baseline;">
+                      <sc-if value="{{ r.hasReport }}"><a href="{{ r.report }}" target="_blank" rel="noopener noreferrer" style="font-family:var(--font-label); font-size:12px; white-space:nowrap;">{{ r.reportLabel }} ↓</a></sc-if>
+                      <sc-if value="{{ r.hasLink }}"><a href="{{ r.url }}" target="_blank" rel="noopener noreferrer" style="font-family:var(--font-label); font-size:12px; white-space:nowrap;">{{ r.linkLabel }} ↗</a></sc-if>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ e.hasTechs }}">
+              <p style="font-family:var(--font-label); font-size:12px; color:var(--muted); margin:12px 0 0;"><span style="background:var(--ink); color:#F0F0F0; padding:2px 6px; margin-right:8px;">tech</span>{{ e.techString }}</p>
+            </sc-if>
+            {{ e.imageEl }}
+            <sc-if value="{{ e.hasLinks }}">
+              <div style="display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:14px;">
+                <sc-for list="{{ e.links }}" as="lk" hint-placeholder-count="2">
+                  <a href="{{ lk.url }}" target="_blank" rel="noopener noreferrer" style="font-size:14px;">{{ lk.label }} ↗</a>
+                </sc-for>
+              </div>
+            </sc-if>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="academics" data-navid="academics" data-screen-label="Academics" ref="{{ setSecRef }}" style="padding:14px 0 40px; scroll-margin-top:70px;">
+      <div style="border-top:3px solid var(--ink); padding-top:16px; margin-bottom:24px;">
+        <span data-wiggle="1" style="{{ eyebrowStyle }}">02 / SCHOOL</span>
+        <h2 style="font-family:var(--font-head); font-size:33px; font-weight:600; letter-spacing:-.4px; margin:12px 0 0;">Academics</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px;">
+
+        <div style="{{ academics.groupStyle }}">
+          <p style="{{ academics.labelStyle }}">GPA &amp; PSAT</p>
+          <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); margin:0 0 3px;">Unweighted GPA</p>
+          <p style="font-family:var(--font-head); font-size:24px; font-weight:600; letter-spacing:-1px; margin:0 0 4px;">{{ academics.gpa }}</p>
+          <p style="font-size:12.5px; line-height:1.4; color:var(--muted); margin:0 0 14px;">{{ academics.gpaNote }}</p>
+          <p style="font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); margin:0 0 3px;">PSAT</p>
+          <p style="font-family:var(--font-head); font-size:24px; font-weight:600; letter-spacing:-1px; margin:0;">{{ academics.testing.psat }}</p>
+        </div>
+
+        <div style="{{ academics.groupStyle }}">
+          <p style="{{ academics.labelStyle }}">AP Exams</p>
+          <p style="font-size:14px; color:var(--body); line-height:1.5; margin:0 0 11px;">{{ academics.testing.apNote }}</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ academics.apChips }}" as="c" hint-placeholder-count="5">
+              <span data-lift="1" style="{{ c.style }}"><span style="{{ c.scoreStyle }}">{{ c.score }}</span>{{ c.label }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="{{ academics.groupStyle }}">
+          <p style="{{ academics.labelStyle }}">Selected Advanced Coursework</p>
+          <sc-if value="{{ academics.useChips }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <sc-for list="{{ academics.courseworkChips }}" as="c" hint-placeholder-count="7"><span data-lift="1" style="{{ c.style }}">{{ c.label }}</span></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ academics.useList }}" hint-placeholder-val="{{ false }}">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:5px;">
+              <sc-for list="{{ academics.courseworkNames }}" as="c" hint-placeholder-count="7"><li style="font-size:14px; color:var(--body); line-height:1.4; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--sage);">–</span>{{ c }}</li></sc-for>
+            </ul>
+          </sc-if>
+        </div>
+
+        <div style="{{ academics.groupStyle }}">
+          <p style="{{ academics.labelStyle }}">Planned Senior Coursework</p>
+          <sc-if value="{{ academics.useChips }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <sc-for list="{{ academics.plannedChips }}" as="c" hint-placeholder-count="8"><span data-lift="1" style="{{ c.style }}">{{ c.label }}</span></sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ academics.useList }}" hint-placeholder-val="{{ false }}">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:5px;">
+              <sc-for list="{{ academics.plannedNames }}" as="c" hint-placeholder-count="8"><li style="font-size:14px; color:var(--body); line-height:1.4; padding-left:16px; position:relative;"><span style="position:absolute; left:0; color:var(--sage);">–</span>{{ c }}</li></sc-for>
+            </ul>
+          </sc-if>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="other" data-navid="other" data-screen-label="Miscellaneous Activities" ref="{{ setSecRef }}" style="padding:14px 0 40px; scroll-margin-top:70px;">
+      <div style="border-top:3px solid var(--ink); padding-top:16px; margin-bottom:24px;">
+        <span data-wiggle="1" style="{{ eyebrowStyle }}">03 / ELSE</span>
+        <h2 style="font-family:var(--font-head); font-size:33px; font-weight:600; letter-spacing:-.4px; margin:12px 0 0;">{{ otherTitle }}</h2>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <sc-for list="{{ other }}" as="e" hint-placeholder-count="3">
+          <article style="{{ e.wrapStyle }}">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:8px;">
+              <sc-if value="{{ e.hasTag }}"><span style="{{ e.tagStyle }}">{{ e.tag }}</span></sc-if>
+              <sc-if value="{{ e.hasStatus }}"><span style="{{ e.statusStyle }}">{{ e.status }}</span></sc-if>
+            </div>
+            <sc-if value="{{ e.hasTitleUrl }}" hint-placeholder-val="{{ false }}"><h3 style="font-family:var(--font-head); font-size:23px; font-weight:600; margin:0; line-height:1.2;"><a href="{{ e.titleUrl }}" target="_blank" rel="noopener noreferrer" style="color:inherit;">{{ e.title }}</a></h3></sc-if><sc-if value="{{ e.hasNoTitleUrl }}" hint-placeholder-val="{{ true }}"><h3 style="font-family:var(--font-head); font-size:23px; font-weight:600; margin:0; line-height:1.2;">{{ e.title }}</h3></sc-if>
+            <sc-if value="{{ e.hasYears }}"><div style="margin-top:8px;"><span style="font-family:var(--font-label); font-size:12px; color:var(--muted);">{{ e.years }}</span></div></sc-if>
+            <sc-for list="{{ e.descriptionParagraphs }}" as="para" hint-placeholder-count="1">
+              <p style="font-size:15.5px; line-height:1.6; color:var(--body); margin:11px 0 0; max-width:68ch; text-wrap:pretty;">{{ para }}</p>
+            </sc-for>
+            <sc-if value="{{ e.hasBullets }}">
+              <ul style="list-style:none; padding:0; margin:12px 0 0; display:flex; flex-direction:column; gap:7px;">
+                <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="2">
+                  <li style="font-size:14.5px; color:var(--body); line-height:1.55; padding-left:20px; position:relative;"><span data-dot="1" style="position:absolute; left:0; top:3px; width:8px; height:8px; background:var(--sage); border:1.5px solid var(--ink);"></span>{{ b }}</li>
+                </sc-for>
+              </ul>
+            </sc-if>
+            {{ e.imageEl }}
+            <sc-if value="{{ e.hasLinks }}">
+              <div style="display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:14px;">
+                <sc-for list="{{ e.links }}" as="lk" hint-placeholder-count="2">
+                  <a href="{{ lk.url }}" target="_blank" rel="noopener noreferrer" style="font-size:14px;">{{ lk.label }} ↗</a>
+                </sc-for>
+              </div>
+            </sc-if>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="contact" data-navid="contact" data-screen-label="Contact" ref="{{ setSecRef }}" style="padding:14px 0 44px; scroll-margin-top:70px;">
+      <div style="border-top:3px solid var(--ink); padding-top:16px; margin-bottom:20px;">
+        <span data-wiggle="1" style="{{ eyebrowStyle }}">04 / SAY HI</span>
+        <h2 style="font-family:var(--font-head); font-size:33px; font-weight:600; letter-spacing:-.4px; margin:12px 0 0;">Contact</h2>
+      </div>
+      <p style="font-size:16px; line-height:1.55; color:var(--body); margin:0 0 18px; max-width:58ch;">{{ contact.intro }}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <sc-for list="{{ contact.links }}" as="l" hint-placeholder-count="2">
+          <a href="{{ l.url }}" target="_blank" rel="noopener noreferrer" style="{{ l.style }}" style-hover="background:var(--pale); transform:translate(-1px,-1px);">{{ l.label }} ↗</a>
+        </sc-for>
+      </div>
+    </section>
+
+    <footer style="border-top:3px solid var(--ink); padding:18px 0 46px; display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px;">
+        <span data-wiggle="1" style="font-family:var(--font-label); font-size:11px; font-weight:700; background:var(--ink); color:#F0F0F0; padding:4px 9px; transform:rotate(-1.5deg); display:inline-block;">© 2026 - Thank you for visiting!</span>
+        <span style="font-family:var(--font-label); font-size:12px; color:var(--muted);">Joseph Park · Keep Looking...</span>
+      </div>
+      <span style="font-family:var(--font-label); font-size:15px; color:black; line-height:1.55; max-width:74ch;">AI DISCLOSURE: This website was created and customized with the assistance of AI tools. The writing, content, and design choices are all mine and human. </span>
+      <sc-if value="{{ eggHint }}" hint-placeholder-val="{{ false }}">
+        <span style="font-family:var(--font-label); font-size:10.5px; color:black; letter-spacing:1px;">type "capture-the-flag" for a surprise</span>
+      </sc-if>
+    </footer>
+
+    <sc-if value="{{ eggFound }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="position:fixed; inset:0; z-index:40; pointer-events:none; display:grid; place-items:center;">
+        {{ butterflies }}
+        <div style="font-family:var(--font-label); font-size:clamp(13px,2.4vw,20px); font-weight:700; color:#F0F0F0; background:var(--ink); border:2.5px solid var(--accent); padding:12px 18px; transform:rotate(-1.5deg); box-shadow:6px 6px 0 var(--sage); white-space:nowrap;">josephip&#123;r34l_pr0gr4mm3rs_u53_bu77erfl135&#125;</div>
+      </div>
+    </sc-if>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;headingFont&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Spectral (original)&quot;, &quot;Merriweather&quot;, &quot;Palatino / Book Antiqua&quot;, &quot;Lora&quot;], &quot;default&quot;: &quot;Palatino / Book Antiqua&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;foundation&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Original sage&quot;, &quot;Deeper sage&quot;, &quot;Deepest sage&quot;], &quot;default&quot;: &quot;Deeper sage&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;background&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Dots (original)&quot;, &quot;Plain paper&quot;, &quot;Graph grid&quot;, &quot;Diagonal hatch&quot;, &quot;Notebook rule&quot;, &quot;Sage wash&quot;, &quot;Cross ticks&quot;], &quot;default&quot;: &quot;Cross ticks&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;bioLayout&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;Original block&quot;, &quot;Lead + question cards&quot;, &quot;Lead + questions + interests&quot;, &quot;Two-column field notes&quot;, &quot;Terminal readme&quot;, &quot;Numbered question ticket&quot;], &quot;default&quot;: &quot;Numbered question ticket&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;cursorStyle&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;System (original)&quot;, &quot;Sage arrow&quot;, &quot;Ink arrow&quot;, &quot;Sticker arrow&quot;], &quot;default&quot;: &quot;Sage arrow&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;microInteractions&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;loadAnimation&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;easterEgg&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Experiments&quot; },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#AD781B&quot;, &quot;options&quot;: [&quot;#AD781B&quot;, &quot;#b0503a&quot;, &quot;#2f6d63&quot;, &quot;#9c4a6a&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Style&quot; },
+  &quot;courseworkStyle&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;chips&quot;, &quot;list&quot;], &quot;default&quot;: &quot;chips&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Style&quot; }
+}">
+const FONT_SETS = {
+  "Spectral (original)": "'Spectral', Georgia, serif",
+  "Merriweather": "'Merriweather', Georgia, serif",
+  "Palatino / Book Antiqua": "'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif",
+  "Lora": "'Lora', Georgia, serif"
+};
+
+const FOUNDATIONS = {
+  "Original sage":  { sage: "#96A78D", mid: "#B6CEB4", pale: "#D9E9CF", rule: "#cdd4c4", tint: "#f4f7ef" },
+  "Deeper sage":    { sage: "#7E9377", mid: "#A6C0A2", pale: "#CFE2C4", rule: "#c2ccb8", tint: "#f1f5ec" },
+  "Deepest sage":   { sage: "#65805F", mid: "#93AF8E", pale: "#C4D9B8", rule: "#b6c3ac", tint: "#eef3e8" }
+};
+
+const BACKGROUNDS = {
+  "Dots (original)": { image: "radial-gradient(#dce1d6 1.4px, transparent 1.4px)", size: "20px 20px" },
+  "Plain paper":     { image: "none", size: "auto" },
+  "Graph grid":      { image: "linear-gradient(#e2e6dd 1px, transparent 1px), linear-gradient(90deg, #e2e6dd 1px, transparent 1px)", size: "26px 26px" },
+  "Diagonal hatch":  { image: "repeating-linear-gradient(45deg, #e4e8de 0 1px, transparent 1px 11px)", size: "auto" },
+  "Notebook rule":   { image: "linear-gradient(#e0e6da 1px, transparent 1px)", size: "100% 30px" },
+  "Sage wash":       { image: "linear-gradient(180deg, #e7ede1 0, #F0F0F0 620px)", size: "auto" },
+  "Cross ticks":     { image: "linear-gradient(#dde3d7 1.2px, transparent 1.2px), linear-gradient(90deg, #dde3d7 1.2px, transparent 1.2px)", size: "24px 6px, 6px 24px" }
+};
+
+const ICONS = {
+  "puzzles": "▦", "violin": "♪", "soccer": "◉", "reading & writing": "✎",
+  "movies": "▶", "cs club": "❯", "skateboarding": "◗"
+};
+
+class Component extends DCLogic {
+  state = { data: null, fonts: null, fileAccent: "", activeId: "home", egg: false };
+
+  constructor(props) {
+    super(props);
+    this.sectionEls = [];
+    this.setSecRef = (el) => { if (el && !this.sectionEls.includes(el)) this.sectionEls.push(el); };
+    this.setRootRef = (el) => { if (el) this.rootEl = el; };
+    this.buf = "";
+  }
+
+  componentDidMount() {
+    const load = () => {
+      if (window.SITE_DATA) this.setState({ data: window.SITE_DATA, fonts: window.FONTS || null, fileAccent: window.ACCENT || "" });
+      else setTimeout(load, 30);
+    };
+    load();
+    this.onKey = (e) => {
+      if (!this.props.easterEgg || e.key.length !== 1) return;
+      this.buf = (this.buf + e.key.toLowerCase()).slice(-20);
+      if (!this.state.egg && /capture-?the-?flag/.test(this.buf)) {
+        this.setState({ egg: true });
+        clearTimeout(this.eggT);
+        this.eggT = setTimeout(() => this.setState({ egg: false }), 6000);
+      }
+    };
+    window.addEventListener("keydown", this.onKey);
+    this.applyTheme();
+  }
+
+  componentDidUpdate() {
+    this.applyTheme();
+    if (this.state.data && !this.obs && this.sectionEls.length) {
+      this.obs = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) this.setState({ activeId: e.target.dataset.navid }); });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      this.sectionEls.forEach((el) => this.obs.observe(el));
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.obs) this.obs.disconnect();
+    clearTimeout(this.eggT);
+    window.removeEventListener("keydown", this.onKey);
+  }
+
+  accent() { return this.state.fileAccent || this.props.accentColor || "#b0503a"; }
+
+  applyTheme() {
+    const el = this.rootEl;
+    if (!el) return;
+    const p = this.props;
+    const f = this.state.fonts || {};
+    const head = FONT_SETS[p.headingFont] || f.heading || FONT_SETS["Spectral (original)"];
+    const vars = {
+      "--font-head": head,
+      "--font-body": f.body || "'Hanken Grotesk', system-ui, sans-serif",
+      "--font-label": f.label || "'Space Mono', ui-monospace, monospace",
+      "--accent": this.accent()
+    };
+    const found = FOUNDATIONS[p.foundation] || FOUNDATIONS["Original sage"];
+    Object.keys(found).forEach((k) => { vars["--" + k] = found[k]; });
+    Object.keys(vars).forEach((k) => el.style.setProperty(k, vars[k]));
+    const bg = BACKGROUNDS[p.background] || BACKGROUNDS["Dots (original)"];
+    el.style.backgroundImage = bg.image;
+    el.style.backgroundSize = bg.size;
+    el.style.backgroundRepeat = bg.image === "none" ? "no-repeat" : "repeat";
+    el.dataset.micro = p.microInteractions ? "on" : "off";
+    el.dataset.anim = p.loadAnimation ? "on" : "off";
+    el.dataset.cursor = { "Sage arrow": "sage", "Ink arrow": "ink", "Sticker arrow": "sticker" }[p.cursorStyle] || "off";
+  }
+
+  handleNav(ev, id) {
+    if (ev) ev.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 58;
+      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+    }
+    this.setState({ activeId: id });
+  }
+
+  splitParagraphs(text) {
+    return (text || "").split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+  }
+
+  buildBio(bioText, interestList) {
+    const paras = this.splitParagraphs(bioText);
+    const mode = this.props.bioLayout || "Original block";
+    const flags = {
+      plain: mode === "Original block",
+      structured: mode === "Lead + question cards" || mode === "Lead + questions + interests",
+      twoCol: mode === "Two-column field notes",
+      terminal: mode === "Terminal readme",
+      ticket: mode === "Numbered question ticket"
+    };
+    const sentences = paras.length ? (paras[0].match(/[^.?!]+[.?!]+|\S[^.?!]*$/g) || [paras[0]]).map((s) => s.trim()) : [];
+    const questions = sentences.filter((s) => s.endsWith("?"));
+    const interests = (mode === "Lead + question cards" ? [] : interestList || [])
+      .filter((i) => i && i.label).map((i) => ({
+        label: i.label, note: i.note || "",
+        icon: i.icon || ICONS[i.label.toLowerCase()] || "✦",
+        tip: i.note ? i.label + " — " + i.note : i.label
+      }));
+    return Object.assign(flags, {
+      paragraphs: paras,
+      lead: sentences.filter((s) => !s.endsWith("?")).join(" "),
+      leadParts: sentences.filter((s) => !s.endsWith("?")).map((text) => ({
+        text, style: /interests lie/i.test(text) ? "font-weight:700;" : "font-weight:inherit;"
+      })),
+      questions,
+      numbered: questions.map((text, i) => ({ text, n: String(i + 1).padStart(2, "0") })),
+      rest: paras.slice(1),
+      interests, hasInterests: interests.length > 0,
+      interestLine: interests.map((i) => i.label.toLowerCase()).join(" · ")
+    });
+  }
+
+  butterflies() {
+    if (!this.state.egg) return null;
+    return Array.from({ length: 22 }, (_, i) => {
+      const a = (i / 22) * Math.PI * 2 + (i % 3) * 0.25;
+      const dist = 180 + (i % 5) * 90;
+      return React.createElement("span", {
+        key: i, className: "jp-bfly", "aria-hidden": "true",
+        style: {
+          "--tx": Math.cos(a) * dist + "px",
+          "--ty": Math.sin(a) * dist * 0.7 + "px",
+          "--r": (i % 2 ? 1 : -1) * (20 + i * 5) + "deg",
+          "--s": 26 + (i % 4) * 10 + "px",
+          "--d": (i % 6) * 0.07 + "s"
+        }
+      }, React.createElement("img", { src: "./butterfly.png", alt: "" }));
+    });
+  }
+
+  linkBtnStyle(accent) {
+    return "display:inline-flex; align-items:center; font-family:var(--font-body); font-weight:700; font-size:14px; text-decoration:none; color:#2b2b2b; background:#fff; border:2px solid #2b2b2b; padding:8px 14px; box-shadow:3px 3px 0 " + accent + ";";
+  }
+  chipStyle(bg) {
+    return "display:inline-flex; align-items:center; font-family:var(--font-body); font-size:13px; font-weight:500; color:#2b2b2b; background:" + bg + "; border:1.5px solid #2b2b2b; padding:5px 10px; box-shadow:2px 2px 0 rgba(43,43,43,.18);";
+  }
+  groupStyle(accent) {
+    return "border:2px solid var(--ink); border-top:5px solid " + accent + "; background:#fff; padding:16px 18px; box-shadow:4px 4px 0 rgba(150,167,141,.55);";
+  }
+  labelStyle(accent) {
+    return "font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:" + accent + "; margin:0 0 11px;";
+  }
+
+  mapEntry(accent) {
+    const clean = (a) => (a || []).filter(Boolean);
+    const visible = (a) => (a || []).filter((l) => l && l.url);
+    return (e, i) => {
+      const inProgress = /progress/i.test(e.status || "");
+      const techs = clean(e.technologies);
+      const bullets = clean(e.bullets);
+      const links = visible(e.links);
+      const results = (e.results || []).filter((r) => r && r.result).map((r) => ({
+        competition: r.competition || "",
+        compStyle: "font-family:var(--font-label); font-size:11.5px; font-weight:700; letter-spacing:.4px; color:" + accent + ";",
+        result: r.result || "",
+        season: r.season || "", hasSeason: !!r.season,
+        url: r.url || "", hasLink: !!r.url, linkLabel: r.linkLabel || "Results",
+        report: r.report || "", hasReport: !!r.report, reportLabel: r.reportLabel || "Report"
+      }));
+      const titleUrl = e.titleUrl || "";
+      return {
+        title: e.title || "",
+        titleUrl, hasTitleUrl: !!titleUrl, hasNoTitleUrl: !titleUrl,
+        tag: e.tag || "", hasTag: !!e.tag,
+        tagStyle: "font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:" + accent + "; padding:3px 8px;",
+        years: e.years || "", hasYears: !!e.years,
+        role: e.role || "", hasRole: !!e.role,
+        roleStyle: "font-family:var(--font-label); font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#2b2b2b; background:var(--mid); border:2px solid #2b2b2b; padding:3px 10px; box-shadow:2px 2px 0 " + accent + ";",
+        status: e.status || "", hasStatus: !!e.status,
+        statusStyle: "font-family:var(--font-label); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; padding:3px 8px; border:1.5px solid " + (inProgress ? accent : "#c7cfbe") + "; color:" + (inProgress ? accent : "#6a6a66") + ";",
+        descriptionParagraphs: this.splitParagraphs(e.description),
+        bullets, hasBullets: bullets.length > 0,
+        results, hasResults: results.length > 0,
+        hasTechs: techs.length > 0, techString: techs.join(", "),
+        links, hasLinks: links.length > 0,
+        wrapStyle: "border:2.5px solid " + accent + "; background:" + (i % 2 ? "var(--tint)" : "#ffffff") + "; padding:20px 22px; box-shadow:5px 5px 0 var(--sage);",
+        imageEl: e.image ? React.createElement("img", { src: e.image, alt: e.imageAlt || e.title || "", style: { display: "block", maxWidth: "100%", height: "auto", marginTop: "14px", border: "2px solid #2b2b2b" } }) : null
+      };
+    };
+  }
+
+  renderVals() {
+    const accent = this.accent();
+    const useChips = (this.props.courseworkStyle || "chips") === "chips";
+    const eyebrowStyle = "display:inline-block; font-family:var(--font-label); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; background:" + accent + "; border:2px solid var(--ink); padding:3px 9px; transform:rotate(-1.3deg); box-shadow:3px 3px 0 var(--ink);";
+    const base = {
+      navItems: this.buildNav(), setSecRef: this.setSecRef, setRootRef: this.setRootRef,
+      accent, eyebrowStyle,
+      eggHint: !!this.props.easterEgg && !this.state.egg,
+      eggFound: !!this.props.easterEgg && this.state.egg,
+      butterflies: this.butterflies()
+    };
+
+    const d = this.state.data;
+    const academicsBase = { useChips, useList: !useChips, groupStyle: this.groupStyle(accent), labelStyle: this.labelStyle(accent) };
+    if (!d) {
+      return Object.assign(base, {
+        profile: { location: "", primaryLinks: [] },
+        bio: this.buildBio(""),
+        workTitle: "Selected Works & Activities", otherTitle: "Miscellaneous Activities",
+        work: [], other: [], contact: { intro: "", links: [] },
+        academics: Object.assign({ gpa: "", gpaNote: "", testing: { apNote: "", psat: "" }, apChips: [], courseworkNames: [], courseworkChips: [], plannedNames: [], plannedChips: [] }, academicsBase)
+      });
+    }
+
+    const clean = (a) => (a || []).filter(Boolean);
+    const visible = (a) => (a || []).filter((l) => l && l.url);
+    const entry = this.mapEntry(accent);
+    const p = d.profile || {};
+    const s = d.sections || {};
+    const ac = d.academics || {};
+    const t = ac.testing || {};
+    const featured = (arr) => (arr || []).filter((c) => c && c.featured && c.name).map((c) => c.name);
+    const courseworkNames = featured(ac.coursework);
+    const plannedNames = featured(ac.planned);
+    const scoreStyle = "font-family:var(--font-label); font-size:13px; font-weight:700; background:" + accent + "; color:#fff; padding:2px 7px; margin-right:7px;";
+    const c = d.contact || {};
+
+    return Object.assign(base, {
+      profile: {
+        location: p.location || "",
+        primaryLinks: visible(p.primaryLinks).map((l) => Object.assign({}, l, { style: this.linkBtnStyle(accent) }))
+      },
+      bio: this.buildBio(p.bio, p.interests),
+      workTitle: s.work || "Selected Works & Activities",
+      otherTitle: s.other || "Miscellaneous Activities",
+      work: (d.work || []).map(entry),
+      other: (d.other || []).map(entry),
+      academics: Object.assign({
+        gpa: ac.gpa || "", gpaNote: ac.gpaNote || "",
+        testing: { apNote: t.apNote || "", psat: t.psat || "" },
+        apChips: clean(t.apExams).map((label) => ({ label, score: t.apScore || "5", style: this.chipStyle("#ffffff"), scoreStyle })),
+        courseworkNames, courseworkChips: courseworkNames.map((label) => ({ label, style: this.chipStyle("#ffffff") })),
+        plannedNames, plannedChips: plannedNames.map((label) => ({ label, style: this.chipStyle("var(--pale)") }))
+      }, academicsBase),
+      contact: { intro: c.intro || "", links: visible(c.links).map((l) => Object.assign({}, l, { style: this.linkBtnStyle(accent) })) }
+    });
+  }
+
+  buildNav() {
+    const items = [["home", "Home"], ["work", "Work"], ["academics", "Academics"], ["other", "Misc"], ["contact", "Contact"]];
+    const base = "font-family:var(--font-label); font-size:12px; font-weight:400; text-decoration:none; padding:5px 8px;";
+    return items.map(([id, label]) => ({
+      href: "#" + id, label,
+      style: base + (id === this.state.activeId ? " background:#2b2b2b; color:#F0F0F0;" : " color:#2b2b2b;"),
+      onClick: (ev) => this.handleNav(ev, id)
+    }));
+  }
+}
+</script>
+</body>
+</html>
